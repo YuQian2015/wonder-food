@@ -25,6 +25,7 @@ module.exports = () => {
                     code: ctx.status,
                 };
             }
+            console.log(err);
         }
     };
 };

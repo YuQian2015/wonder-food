@@ -1,7 +1,7 @@
 // app/service/index.js
 
-const user = require('./user');
+const userService = require('./user');
 
 module.exports = {
-    user
+    userService
 };

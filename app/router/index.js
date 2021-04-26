@@ -13,6 +13,6 @@ const index = async (ctx, next) => {
 };
 
 router.get('/', index);
-router.use('/user', user.routes(), user.allowedMethods()); // 设置user的路由
+router.use('/users', user.routes(), user.allowedMethods()); // 设置user的路由
 
 module.exports = router;
