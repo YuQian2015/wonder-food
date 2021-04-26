@@ -1,0 +1,18 @@
+// app/router/index.js
+
+const Router = require('koa-router');
+const config = require('config'); // 引入config
+const apiPrefix = config.get('Router.apiPrefix');
+const router = new Router();
+router.prefix(apiPrefix); // 设置路由前缀
+const user = require('./user');
+
+const index = async (ctx, next) => {
+    console.log(ctx.app);
+    ctx.body = 'Hello World!'
+};
+
+router.get('/', index);
+router.use('/user', user.routes(), user.allowedMethods()); // 设置user的路由
+
+module.exports = router;

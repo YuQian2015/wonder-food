@@ -1,0 +1,31 @@
+{
+  "name": "koa-mysql-start",
+  "version": "1.0.0",
+  "description": "使用koa2+mysql进行API开发的快速开始项目",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "set NODE_ENV=development&&nodemon --delay 2000ms app.js",
+    "prod": "set NODE_ENV=production&&npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.1",
+    "dotenv-safe": "^8.2.0",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-cors": "0.0.16",
+    "koa-nunjucks-2": "^3.0.2",
+    "koa-router": "^7.4.0",
+    "log4js": "^4.0.2",
+    "mongoose": "^5.9.20",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "sequelize-cli": "^6.2.0"
+  }
+}
