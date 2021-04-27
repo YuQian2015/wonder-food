@@ -16,6 +16,16 @@ class PublicController {
     const token = jwt.sign(userToken, jwtSecret, { expiresIn: '3h' }) // token签名 有效期为3小时
     ctx.setResponse({ token });
   }
+
+  async register(ctx) {
+    const { name, email, password } = ctx.request.body;
+    const user = await userService.createUser(ctx, { name, email, password });
+    let userToken = {
+      id: user.id
+    }
+    const token = jwt.sign(userToken, jwtSecret, { expiresIn: '3h' }) // token签名 有效期为3小时
+    ctx.setResponse({ token });
+  }
 }
 
 module.exports = new PublicController();
