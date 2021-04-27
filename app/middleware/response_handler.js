@@ -18,6 +18,7 @@ module.exports = () => {
         } catch (err) {
             // 4xx的错误返回给客户端
             if (ctx.status >= 400 && ctx.status < 500) {
+                console.log(ctx.status);
                 ctx.body = {
                     success: false,
                     message: err.message,

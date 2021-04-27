@@ -16,8 +16,17 @@ class UserService {
         return ctx.model.user.findByPk(toInt(id));
     }
 
+    async loginUser(ctx, data) {
+        const { email, password } = data
+        return ctx.model.user.findOne({
+            where: {
+                email, password
+            }
+        });
+    }
+
     async createUser(ctx, data) {
-        const { name, age, email, tel, password, avatar_url, gender } = data;
+        const { name, email, password } = data;
         if (!name || !password || !email) {
             ctx.status = 400;
             throw new Error('缺少必填信息！');

@@ -11,6 +11,7 @@ function toInt(str) {
 class UserController {
 
   async index(ctx) {
+    console.log(ctx.state.user);
     const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
     const result = await userService.findUsers(ctx, query);
     ctx.setResponse(result);
@@ -33,7 +34,7 @@ class UserController {
   }
 
   async destroy(ctx) {
-    await ctx.service.user.updateUser(ctx, ctx.params.id);
+    await userService.updateUser(ctx, ctx.params.id);
   }
 }
 

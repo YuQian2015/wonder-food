@@ -4,10 +4,13 @@
         "port": "APP_PORT" // 端口
     },
     "Database": {
-        "user": "DB_USER", // MongoDB用户名
-        "password": "DB_PASSWORD", // MongoDB密码
+        "user": "DB_USER", // DB用户名
+        "password": "DB_PASSWORD", // DB密码
         "host": "DB_HOST",
-        "dbName": "DB_NAME", // MongoDB数据库名
+        "dbName": "DB_NAME", // DB数据库名
         "port": "DB_PORT"
+    },
+    "Token": {
+        "jwtSecret": "JWT_SECRET"
     }
 }
