@@ -4,8 +4,8 @@ class PostService {
     }
 
     async createPost(ctx, data) {
-        const { name, email, password } = data;
-        if (!name || !password || !email) {
+        const { content } = data;
+        if (!content) {
             ctx.status = 400;
             throw new Error('缺少必填信息！');
         }

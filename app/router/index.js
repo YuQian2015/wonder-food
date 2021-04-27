@@ -16,7 +16,7 @@ const index = async (ctx, next) => {
 
 router.get('/', index);
 router.use('/users', user.routes(), user.allowedMethods()); // 设置user的路由
-router.use('/post', post.routes(), post.allowedMethods()); // 帖子
+router.use('/posts', post.routes(), post.allowedMethods()); // 帖子
 router.use('/public', public.routes(), public.allowedMethods()); // 设置公共路由
 
 module.exports = router;

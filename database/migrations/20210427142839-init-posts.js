@@ -9,16 +9,7 @@ module.exports = {
       title: STRING,
       content: STRING,
       type: INTEGER,
-      images: {
-        type: STRING,
-        allowNull: true,
-        get() {
-          return this.getDataValue('images').split(',');
-        },
-        set(value) {
-          return this.setDataValue('images', value.join(','))
-        }
-      },
+      images: STRING,
       created_at: DATE,
       updated_at: DATE,
     });

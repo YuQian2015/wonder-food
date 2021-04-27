@@ -2,22 +2,13 @@
 const { INTEGER, DATE, STRING, ENUM } = require("sequelize");
 const { sequelize } = require('../../config/plugin');
 
-const User = sequelize.define('post', {
+const Post = sequelize.define('post', {
     id: { type: INTEGER, primaryKey: true, autoIncrement: true },
     created_by: INTEGER,
     title: STRING,
     content: STRING,
     type: INTEGER,
-    images: {
-        type: STRING,
-        allowNull: true,
-        get() {
-            return this.getDataValue('images').split(',');
-        },
-        set(value) {
-            return this.setDataValue('images', value.join(','))
-        }
-    },
+    images: STRING,
     created_at: DATE,
     updated_at: DATE,
 }, {
@@ -27,4 +18,4 @@ const User = sequelize.define('post', {
     updatedAt: 'updated_at',
 });
 
-module.exports = User;
+module.exports = Post;
