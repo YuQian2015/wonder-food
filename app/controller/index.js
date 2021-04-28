@@ -3,7 +3,8 @@
 const user = require('./user');
 const public = require('./public');
 const post = require('./post');
+const upload = require('./upload');
 
 module.exports = {
-  user, public, post
+  user, public, post, upload
 };

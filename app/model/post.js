@@ -7,7 +7,10 @@ const Post = sequelize.define('post', {
     created_by: INTEGER,
     title: STRING,
     content: STRING,
-    type: INTEGER,
+    type: {
+        type: STRING,
+        defaultValue: 0 // 0 发布帖子内容 1 回复
+    },
     images: STRING,
     created_at: DATE,
     updated_at: DATE,

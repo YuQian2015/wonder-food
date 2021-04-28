@@ -8,7 +8,6 @@ function toInt(str) {
 
 class PostController {
   async index(ctx) {
-    console.log(ctx);
     const { limit, offset } = ctx.query;
     const query = { limit: toInt(limit), offset: toInt(offset) };
     const posts = await postService.findPosts(ctx, query);
