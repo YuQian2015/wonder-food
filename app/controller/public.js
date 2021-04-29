@@ -3,7 +3,13 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const jwtSecret = config.get('Token.jwtSecret');
-const { userService } = require("../service"); // 引入service
+const { userService, postService } = require("../service"); // 引入service
+
+function toInt(str) {
+  if (typeof str === 'number') return str;
+  if (!str) return str;
+  return parseInt(str, 10) || 0;
+}
 
 class PublicController {
 
@@ -30,6 +36,13 @@ class PublicController {
     }
     const token = jwt.sign(userToken, jwtSecret, { expiresIn: '3h' }) // token签名 有效期为3小时
     ctx.setResponse({ token });
+  }
+
+  async getPosts(ctx) {
+    const { limit, offset } = ctx.query;
+    const query = { limit: toInt(limit), offset: toInt(offset) };
+    const posts = await postService.findPosts(ctx, query);
+    ctx.setResponse(posts);
   }
 }
 

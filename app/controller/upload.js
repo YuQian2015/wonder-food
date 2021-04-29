@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const config = require('config'); // 引入config
 const mkdirp = require('mkdirp');
+const appConfig = config.get('App'); // 直接使用 config 获取App的配置
 
 class UploadController {
   async uploadImage(ctx) {
@@ -17,7 +19,7 @@ class UploadController {
     const upStream = fs.createWriteStream(path.resolve(filePath, file.name));
     // 可读流通过管道写入可写流
     reader.pipe(upStream);
-    ctx.setResponse({});
+    ctx.setResponse({ url : `http://${appConfig.ip}:${appConfig.port}/${file.name}`});
   }
 }
 

@@ -7,9 +7,12 @@ module.exports = {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
       created_by: INTEGER,
       title: STRING,
-      content: STRING,
+      content: STRING(512),
       type: INTEGER,
       images: STRING,
+      view_count: INTEGER,
+      like_count: INTEGER,
+      comment_count: INTEGER,
       created_at: DATE,
       updated_at: DATE,
     });

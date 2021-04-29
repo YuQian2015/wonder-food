@@ -1,6 +1,15 @@
 class PostService {
     async findPosts(ctx, query = {}) {
-        return ctx.model.post.findAll(query);
+        return ctx.model.post.findAll({
+            ...query,
+            order: [
+                ['created_at', 'DESC']
+            ],
+            include: [{
+                model: ctx.model.user,
+                attributes: ['name', 'avatar_url', 'id', 'role']
+            }]
+        });
     }
 
     async createPost(ctx, data) {
