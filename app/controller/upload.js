@@ -19,7 +19,7 @@ class UploadController {
     const upStream = fs.createWriteStream(path.resolve(filePath, file.name));
     // 可读流通过管道写入可写流
     reader.pipe(upStream);
-    ctx.setResponse({ url : `http://${appConfig.ip}:${appConfig.port}/${file.name}`});
+    ctx.setResponse({ url: `http://${appConfig.ip}:${appConfig.port}/${file.name}` });
   }
 }
 

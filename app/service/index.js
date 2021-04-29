@@ -2,8 +2,9 @@
 
 const userService = require('./user');
 const postService = require('./post');
+const commentService = require('./comment');
 
 
 module.exports = {
-    userService, postService
+    userService, postService, commentService
 };

@@ -9,6 +9,7 @@ const user = require('./user');
 const public = require('./public');
 const post = require('./post');
 const upload = require('./upload');
+const comment = require('./comment');
 
 const index = async (ctx, next) => {
     console.log(ctx.app);
@@ -16,9 +17,10 @@ const index = async (ctx, next) => {
 };
 
 router.get('/', index);
-router.use('/users', user.routes(), user.allowedMethods()); // 设置user的路由
-router.use('/posts', post.routes(), post.allowedMethods()); // 帖子
+router.use('/users', user.routes(), user.allowedMethods()); // 用户路由
+router.use('/posts', post.routes(), post.allowedMethods()); // 帖子路由
 router.use('/public', public.routes(), public.allowedMethods()); // 设置公共路由
 router.use('/upload', upload.routes(), upload.allowedMethods()); // 上传路由
+router.use('/comments', comment.routes(), comment.allowedMethods()); // 评论路由
 
 module.exports = router;

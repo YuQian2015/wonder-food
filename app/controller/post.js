@@ -7,6 +7,13 @@ function toInt(str) {
 }
 
 class PostController {
+
+  async view(ctx) {
+    const { id } = ctx.params;
+    const post = await postService.findPost(ctx, { id: id });
+    ctx.setResponse(post);
+  }
+
   async index(ctx) {
     const { limit, offset } = ctx.query;
     const query = { limit: toInt(limit), offset: toInt(offset) };

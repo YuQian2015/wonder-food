@@ -1,15 +1,13 @@
 module.exports = (sequelize, DataTypes) => {
     const { INTEGER, DATE, STRING, ENUM } = DataTypes;
-    return sequelize.define('user', {
+    return sequelize.define('comment', {
         id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-        name: STRING(30),
-        age: INTEGER,
-        email: STRING(200),
-        password: STRING, // md5SignValue
-        avatar_url: STRING,
-        gender: ENUM('男', '女', '保密'), // 性别 0未设置 1男 2女
-        role: STRING, // 角色
-        user_status: INTEGER, // 0 访客 1 正式用户
+        content: STRING(512),
+        images: STRING,
+        type: INTEGER,
+        comment_id: INTEGER,
+        post_id: INTEGER,
+        created_by: INTEGER,
         created_at: DATE,
         updated_at: DATE,
     }, {

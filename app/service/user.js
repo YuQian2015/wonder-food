@@ -9,16 +9,16 @@ function toInt(str) {
 class UserService {
 
     async findUsers(ctx, query = {}) {
-        return ctx.model.user.findAll(query);
+        return ctx.model.User.findAll(query);
     }
 
     async findUser(ctx, id) {
-        return ctx.model.user.findByPk(toInt(id));
+        return ctx.model.User.findByPk(toInt(id));
     }
 
     async loginUser(ctx, data) {
         const { email, password } = data
-        return ctx.model.user.findOne({
+        return ctx.model.User.findOne({
             where: {
                 email, password
             }
@@ -31,12 +31,12 @@ class UserService {
             ctx.status = 400;
             throw new Error('缺少必填信息！');
         }
-        return ctx.model.user.create(data);
+        return ctx.model.User.create(data);
     }
 
 
     async updateUser(ctx, id, data) {
-        const user = await ctx.model.user.findByPk(toInt(id));
+        const user = await ctx.model.User.findByPk(toInt(id));
         if (!user) {
             ctx.status = 404;
             return;
@@ -46,7 +46,7 @@ class UserService {
     }
 
     async deleteUser(ctx, id) {
-        const user = await ctx.model.user.findByPk(toInt(id));
+        const user = await ctx.model.User.findByPk(toInt(id));
         if (!user) {
             ctx.status = 404;
             return;
