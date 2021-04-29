@@ -3,7 +3,6 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const jwtSecret = config.get('Token.jwtSecret');
-const { userService, postService } = require("../service"); // 引入service
 
 function toInt(str) {
   if (typeof str === 'number') return str;
@@ -15,7 +14,7 @@ class PublicController {
 
   async login(ctx) {
     const { email, password } = ctx.request.body;
-    const user = await userService.loginUser(ctx, { email, password });
+    const user = await ctx.service.user.loginUser(ctx, { email, password });
     if (user) {
       let userToken = {
         id: user.id
@@ -30,7 +29,7 @@ class PublicController {
 
   async register(ctx) {
     const { name, email, password } = ctx.request.body;
-    const user = await userService.createUser(ctx, { name, email, password });
+    const user = await ctx.service.user.createUser(ctx, { name, email, password });
     let userToken = {
       id: user.id
     }
@@ -41,7 +40,7 @@ class PublicController {
   async getPosts(ctx) {
     const { limit, offset } = ctx.query;
     const query = { limit: toInt(limit), offset: toInt(offset) };
-    const posts = await postService.findPosts(ctx, query);
+    const posts = await ctx.service.post.findPosts(ctx, query);
     ctx.setResponse(posts);
   }
 }

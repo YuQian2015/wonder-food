@@ -1,5 +1,3 @@
-const { postService } = require("../service"); // 引入service
-
 function toInt(str) {
   if (typeof str === 'number') return str;
   if (!str) return str;
@@ -10,20 +8,20 @@ class PostController {
 
   async view(ctx) {
     const { id } = ctx.params;
-    const post = await postService.findPost(ctx, { id: id });
+    const post = await ctx.service.post.findPost(ctx, { id: id });
     ctx.setResponse(post);
   }
 
   async index(ctx) {
     const { limit, offset } = ctx.query;
     const query = { limit: toInt(limit), offset: toInt(offset) };
-    const posts = await postService.findPosts(ctx, query);
+    const posts = await ctx.service.post.findPosts(ctx, query);
     ctx.setResponse(posts);
   }
 
   async create(ctx) {
-    const { created_by, title, content, type, images } = ctx.request.body;
-    const newPost = await postService.createPost(ctx, { created_by, title, content, type, images });
+    const { title, content, type, images } = ctx.request.body;
+    const newPost = await ctx.service.post.createPost(ctx, { title, content, type, images });
     ctx.setResponse(newPost);
   }
 }

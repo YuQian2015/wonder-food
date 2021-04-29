@@ -3,6 +3,7 @@ class PostService {
         console.log(query.id);
         return ctx.model.Post.findOne({
             ...query,
+            order: [ [ ctx.model.Comment, 'created_at', 'DESC'] ],
             include: [{
                 model: ctx.model.User,
                 attributes: ['name', 'avatar_url', 'id', 'role']
@@ -10,7 +11,15 @@ class PostService {
                 model: ctx.model.Comment,
                 // required: true,
                 as: 'comments',
-                // where: { post_id: query.id },
+                // through: {
+                //     attributes: ['createdAt', 'startedAt', 'finishedAt'],
+                //     where: { completed: true }
+                // },
+                where: { post_id: query.id },
+                include: [{
+                    model: ctx.model.User,
+                    attributes: ['name', 'avatar_url', 'id', 'role']
+                }]
             }]
         });
     }

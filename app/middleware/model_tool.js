@@ -1,11 +1,12 @@
-// 扫描所有的model模型
-const fs = require("fs");
-const path = require("path");
 const model = require("../model");
+const controller = require("../controller");
+const service = require("../service");
 
 module.exports = () => {
     return async (ctx, next) => {
+        ctx['controller'] = controller;
         ctx['model'] = model;
+        ctx['service'] = service(ctx);
         await next();
     };
 }

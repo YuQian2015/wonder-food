@@ -1,11 +1,23 @@
-// app/controller/index.js
+// 扫描所有的model模型
+const fs = require("fs");
+const path = require("path");
 
-const user = require('./user');
-const public = require('./public');
-const post = require('./post');
-const upload = require('./upload');
-const comment = require('./comment');
+let files = fs.readdirSync(path.resolve(__dirname)); //同步遍历目录
 
-module.exports = {
-  user, public, post, upload, comment
-};
+let controllerFiles = files.filter((f) => {
+    return f.endsWith('.js');
+}, files);
+
+let controller = {};
+
+console.log(`导入controller...`);
+for (let f of controllerFiles) {
+    let name = f.substring(0, f.length - 3); //user.js ==> name : user
+    if (name === 'index') {
+        continue;
+    }
+
+    controller[name] = require(path.resolve(__dirname, f));
+}
+
+module.exports = controller;

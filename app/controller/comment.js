@@ -1,5 +1,3 @@
-const { commentService } = require("../service"); // 引入service
-
 function toInt(str) {
   if (typeof str === 'number') return str;
   if (!str) return str;
@@ -8,8 +6,8 @@ function toInt(str) {
 
 class CommentController {
   async create(ctx) {
-    const { created_by, title, content, type, images } = ctx.request.body;
-    const newComment = await commentService.createComment(ctx, { created_by, title, content, type, images });
+    const { post_id, comment_id, content, type, images } = ctx.request.body;
+    const newComment = await ctx.service.comment.createComment(ctx, { post_id, comment_id, content, type, images });
     ctx.setResponse(newComment);
   }
 }

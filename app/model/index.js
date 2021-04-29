@@ -1,4 +1,3 @@
-// 扫描所有的model模型
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
@@ -16,8 +15,8 @@ function firstToUpper(str) {
     return str.replace(str[0], str[0].toUpperCase());
 }
 
+console.log(`导入model...`);
 for (let f of modelFiles) {
-    console.log(`从${f}导入model...`);
     let name = f.substring(0, f.length - 3); //user.js ==> name : user
     if (name === 'index') {
         continue;

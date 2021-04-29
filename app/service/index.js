@@ -1,10 +1,26 @@
-// app/service/index.js
+const fs = require("fs");
+const path = require("path");
 
-const userService = require('./user');
-const postService = require('./post');
-const commentService = require('./comment');
+let files = fs.readdirSync(path.resolve(__dirname)); //同步遍历目录
 
+let serviceFiles = files.filter((f) => {
+    return f.endsWith('.js');
+}, files);
 
-module.exports = {
-    userService, postService, commentService
+let service = {};
+
+console.log(`导入service...`);
+for (let f of serviceFiles) {
+    let name = f.substring(0, f.length - 3); //user.js ==> name : user
+    if (name === 'index') {
+        continue;
+    }
+    service[name] = require(path.resolve(__dirname, f));
+}
+
+module.exports = (ctx) => {
+    // for (s in service) {
+    //     service[s].ctx = ctx;
+    // }
+    return service;
 };
