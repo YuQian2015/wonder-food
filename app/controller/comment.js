@@ -10,6 +10,12 @@ class CommentController {
     const newComment = await ctx.service.comment.createComment(ctx, { post_id, comment_id, content, type, images });
     ctx.setResponse(newComment);
   }
+
+  async findComments(ctx) {
+    const { post_id } = ctx.request.query;
+    const comments = await ctx.service.comment.findComment(ctx, { post_id });
+    ctx.setResponse(comments);
+  }
 }
 
 module.exports = new CommentController();

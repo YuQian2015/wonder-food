@@ -1,26 +1,26 @@
 class PostService {
     async findPost(ctx, query = {}) {
-        console.log(query.id);
+        await ctx.model.Post.increment('view_count', { by: 1, where: { id: query.id } });
         return ctx.model.Post.findOne({
             ...query,
-            order: [ [ ctx.model.Comment, 'created_at', 'DESC'] ],
-            include: [{
-                model: ctx.model.User,
-                attributes: ['name', 'avatar_url', 'id', 'role']
-            }, {
-                model: ctx.model.Comment,
-                // required: true,
-                as: 'comments',
-                // through: {
-                //     attributes: ['createdAt', 'startedAt', 'finishedAt'],
-                //     where: { completed: true }
-                // },
-                where: { post_id: query.id },
-                include: [{
-                    model: ctx.model.User,
-                    attributes: ['name', 'avatar_url', 'id', 'role']
-                }]
-            }]
+            // order: [ [ ctx.model.Comment, 'created_at', 'DESC'] ],
+            // include: [{
+            //     model: ctx.model.User,
+            //     attributes: ['name', 'avatar_url', 'id', 'role']
+            // }, {
+            //     model: ctx.model.Comment,
+            //     required: false, // 可能存在没有评论的情况，因此为false
+            //     as: 'comments',
+            //     // through: {
+            //     //     attributes: ['createdAt', 'startedAt', 'finishedAt'],
+            //     //     where: { completed: true }
+            //     // },
+            //     where: { post_id: query.id },
+            //     include: [{
+            //         model: ctx.model.User,
+            //         attributes: ['name', 'avatar_url', 'id', 'role']
+            //     }]
+            // }]
         });
     }
 
