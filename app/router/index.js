@@ -10,6 +10,7 @@ const public = require('./public');
 const post = require('./post');
 const upload = require('./upload');
 const comment = require('./comment');
+const store = require('./store');
 
 const index = async (ctx, next) => {
     console.log(ctx.app);
@@ -22,5 +23,6 @@ router.use('/posts', post.routes(), post.allowedMethods()); // 帖子路由
 router.use('/public', public.routes(), public.allowedMethods()); // 设置公共路由
 router.use('/upload', upload.routes(), upload.allowedMethods()); // 上传路由
 router.use('/comments', comment.routes(), comment.allowedMethods()); // 评论路由
+router.use('/stores', store.routes(), store.allowedMethods()); // 商家路由
 
 module.exports = router;

@@ -32,7 +32,7 @@ class UserController {
   }
 
   async destroy(ctx) {
-    await ctx.service.user.updateUser(ctx, ctx.params.id);
+    await ctx.service.user.deleteUser(ctx, ctx.params.id);
   }
 }
 
