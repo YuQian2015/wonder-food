@@ -18,6 +18,8 @@ class CommentService {
             include: [{
                 model: ctx.model.User,
                 attributes: ['name', 'avatar_url', 'id', 'role']
+            }, {
+                model: ctx.model.Store
             }]
         });
     }

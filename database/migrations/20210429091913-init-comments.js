@@ -7,6 +7,8 @@ module.exports = {
       images: STRING,
       type: INTEGER,
       comment_id: INTEGER,
+      store_id: INTEGER,
+      product_id: INTEGER,
       post_id: INTEGER,
       created_by: INTEGER,
       created_at: DATE,

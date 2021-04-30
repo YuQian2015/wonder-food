@@ -27,8 +27,9 @@ for (let f of modelFiles) {
 }
 
 // 建立对应关系
-const { Post, User, Comment } = model;
+const { Post, User, Comment, Store } = model;
 
+// 一对一
 Post.belongsTo(User, {
     foreignKey: 'created_by',
     targetKey: 'id',
@@ -41,6 +42,12 @@ Post.hasMany(Comment, {
     sourceKey: 'id',
     constraints: false
 })
+
+Comment.belongsTo(Store, {
+    foreignKey: 'store_id',
+    targetKey: 'id',
+    constraints: false
+});
 
 Comment.belongsTo(User, {
     foreignKey: 'created_by',

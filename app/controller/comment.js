@@ -6,8 +6,8 @@ function toInt(str) {
 
 class CommentController {
   async create(ctx) {
-    const { post_id, comment_id, content, type, images } = ctx.request.body;
-    const newComment = await ctx.service.comment.createComment(ctx, { post_id, comment_id, content, type, images });
+    const { post_id, comment_id, content, type, images, store_id } = ctx.request.body;
+    const newComment = await ctx.service.comment.createComment(ctx, { post_id, comment_id, content, type, images, store_id });
     ctx.setResponse(newComment);
   }
 
