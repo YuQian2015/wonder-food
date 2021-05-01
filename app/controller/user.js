@@ -15,8 +15,15 @@ class UserController {
     ctx.setResponse(result);
   }
 
+  async info(ctx) {
+    const { id } = ctx.state.user
+    const user = await ctx.service.user.findUser(ctx, id);
+    ctx.setResponse(user);
+  }
+
   async show(ctx) {
-    ctx.body = await ctx.service.user.findUser(ctx, ctx.params.id);
+    const user = await ctx.service.user.findUser(ctx, ctx.params.id);
+    ctx.setResponse(user);
   }
 
   async create(ctx) {

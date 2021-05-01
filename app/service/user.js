@@ -13,7 +13,9 @@ class UserService {
     }
 
     async findUser(ctx, id) {
-        return ctx.model.User.findByPk(toInt(id));
+        return ctx.model.User.findByPk(toInt(id), {
+            attributes: ['name', 'age', 'id', 'email', 'avatar_url', 'gender', 'role', 'user_status']
+        });
     }
 
     async loginUser(ctx, data) {
