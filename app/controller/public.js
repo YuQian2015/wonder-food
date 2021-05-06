@@ -43,6 +43,33 @@ class PublicController {
     const posts = await ctx.service.post.findPosts(ctx, query);
     ctx.setResponse(posts);
   }
+
+  async system(ctx) {
+    const root = await ctx.service.role.findRole(ctx, { key: 'root' });
+    if (root) {
+      ctx.setResponse('初始化~');
+    } else {
+      throw new Error('系统未初始化~');
+    }
+  }
+  async initSystem(ctx) {
+    const newRole = await ctx.service.role.createRole(ctx, { name: '超级管理员', key: 'root' });
+    if (newRole) {
+      const { name, age, email, tel, password, avatar_url, gender } = ctx.request.body;
+      const newUser = await ctx.service.user.createUser(ctx, { name, age, email, tel, password, avatar_url, gender, role: newRole.id });
+      if (newUser) {
+        let userToken = {
+          id: newUser.id
+        }
+        const token = jwt.sign(userToken, jwtSecret, { expiresIn: '3h' }) // token签名 有效期为3小时
+        ctx.setResponse({ token });
+      } else {
+        throw new Error('初始化失败~');
+      }
+    } else {
+      throw new Error('初始化失败~');
+    }
+  }
 }
 
 module.exports = new PublicController();

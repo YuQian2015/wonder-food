@@ -16,6 +16,14 @@ class RoleService {
         });
     }
 
+    async findRole(ctx, data) {
+        return ctx.model.Role.findOne({
+            where: {
+                ...data
+            }
+        });
+    }
+
     async createRole(ctx, data) {
         const { name } = data;
         if (!name) {
