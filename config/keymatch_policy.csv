@@ -1,7 +1,8 @@
-p, alice, /alice_data/*, GET
-p, alice, /alice_data/resource1, POST
-
-p, bob, /alice_data/resource2, GET
-p, bob, /bob_data/*, POST
-
-p, cathy, /cathy_data, (GET)|(POST)
+p, admin, /pack/list, (GET)|(POST)
+p, admin, /pack, (GET)|(POST)
+p, admin, /file, (GET)|(POST)
+p, admin, /ui, (GET)|(POST)
+p, admin, /home, (GET)|(POST)
+p, admin, /tenant/*, (GET)|(POST)|(PUT)|(DELETE)
+p, admin, /api/v1/**, (GET)|(POST)|(PUT)|(DELETE)
+p, admin, /**, (GET)|(POST)|(PUT)|(DELETE)
