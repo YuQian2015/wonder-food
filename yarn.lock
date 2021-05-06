@@ -128,6 +128,11 @@ async@^2.6.2:
   dependencies:
     lodash "^4.17.14"
 
+await-lock@^2.0.1:
+  version "2.1.0"
+  resolved "https://registry.npm.taobao.org/await-lock/download/await-lock-2.1.0.tgz#bc78c51d229a34d5d90965a1c94770e772c6145e"
+  integrity sha1-vHjFHSKaNNXZCWWhyUdw53LGFF4=
+
 babel-runtime@^6.9.2:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
@@ -241,6 +246,26 @@ camelcase@^5.0.0, camelcase@^5.3.1:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
+
+casbin-sequelize-adapter@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.nlark.com/casbin-sequelize-adapter/download/casbin-sequelize-adapter-2.2.0.tgz#662ec0114567a4699dbac59bd5b93f14c80e3269"
+  integrity sha1-Zi7AEUVnpGmdusWb1bk/FMgOMmk=
+  dependencies:
+    casbin "^5.0.3"
+    reflect-metadata "^0.1.13"
+    sequelize "^6.6.2"
+    sequelize-typescript "^2.1.0"
+
+casbin@^5.0.3, casbin@^5.6.2:
+  version "5.6.2"
+  resolved "https://registry.nlark.com/casbin/download/casbin-5.6.2.tgz#2971d4c5033af492a31c7ec0bcc63849e0bbb0ee"
+  integrity sha1-KXHUxQM69JKjHH7AvMY4SeC7sO4=
+  dependencies:
+    await-lock "^2.0.1"
+    csv-parse "^4.15.3"
+    expression-eval "^2.0.0"
+    picomatch "^2.2.3"
 
 chalk@^3.0.0:
   version "3.0.0"
@@ -438,6 +463,11 @@ crypto-random-string@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-2.0.0.tgz#ef2a7a966ec11083388369baa02ebead229b30d5"
   integrity sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==
+
+csv-parse@^4.15.3:
+  version "4.15.4"
+  resolved "https://registry.npm.taobao.org/csv-parse/download/csv-parse-4.15.4.tgz#ad1ec62aaf71a642982dfcb81f1848184d691db5"
+  integrity sha1-rR7GKq9xpkKYLfy4HxhIGE1pHbU=
 
 d@1, d@^1.0.1:
   version "1.0.1"
@@ -659,6 +689,13 @@ event-emitter@^0.3.5:
     d "1"
     es5-ext "~0.10.14"
 
+expression-eval@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.npm.taobao.org/expression-eval/download/expression-eval-2.1.0.tgz#422915caa46140a7c5b5f248650dea8bf8236e62"
+  integrity sha1-QikVyqRhQKfFtfJIZQ3qi/gjbmI=
+  dependencies:
+    jsep "^0.3.0"
+
 ext@^1.1.2:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/ext/-/ext-1.4.0.tgz#89ae7a07158f79d35517882904324077e4379244"
@@ -761,7 +798,7 @@ glob-parent@~5.1.0:
   dependencies:
     is-glob "^4.0.1"
 
-glob@^7.1.3:
+glob@7.1.6, glob@^7.1.3:
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.6.tgz#141f33b81a7c2492e125594307480c46679278a6"
   integrity sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==
@@ -1062,6 +1099,11 @@ js-beautify@^1.8.8:
     glob "^7.1.3"
     mkdirp "^1.0.4"
     nopt "^5.0.0"
+
+jsep@^0.3.0:
+  version "0.3.5"
+  resolved "https://registry.npm.taobao.org/jsep/download/jsep-0.3.5.tgz#3fd79ebd92f6f434e4857d5272aaeef7d948264d"
+  integrity sha1-P9eevZL29DTkhX1Scqru99lIJk0=
 
 json-buffer@3.0.0:
   version "3.0.0"
@@ -1724,7 +1766,7 @@ path-to-regexp@^1.1.1:
   dependencies:
     isarray "0.0.1"
 
-picomatch@^2.0.4, picomatch@^2.2.1:
+picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.3.tgz#465547f359ccc206d3c48e46a1bcb89bf7ee619d"
   integrity sha512-KpELjfwcCDUb9PeigTs2mBJzXUPzAuP2oPcA989He8Rte0+YUAjw1JVedDhuTKPkHjSYzMN3npC9luThGYEKdg==
@@ -1815,6 +1857,11 @@ readdirp@~3.5.0:
   integrity sha512-cMhu7c/8rdhkHXWsY+osBhfSy0JikwpHK/5+imo+LpeasTF8ouErHrlYkwT0++njiyuDvc7OFY5T3ukvZ8qmFQ==
   dependencies:
     picomatch "^2.2.1"
+
+reflect-metadata@^0.1.13:
+  version "0.1.13"
+  resolved "https://registry.npm.taobao.org/reflect-metadata/download/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
+  integrity sha1-Z648pXyXKiqhZCsQ/jY/4y1J3Ag=
 
 regenerator-runtime@^0.11.0:
   version "0.11.1"
@@ -1953,6 +2000,13 @@ sequelize-pool@^6.0.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/sequelize-pool/-/sequelize-pool-6.1.0.tgz#caaa0c1e324d3c2c3a399fed2c7998970925d668"
   integrity sha512-4YwEw3ZgK/tY/so+GfnSgXkdwIJJ1I32uZJztIEgZeAO6HMgj64OzySbWLgxj+tXhZCJnzRfkY9gINw8Ft8ZMg==
+
+sequelize-typescript@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npm.taobao.org/sequelize-typescript/download/sequelize-typescript-2.1.0.tgz#7d42dac368f32829a736acc4f0c9f3b79fc089bb"
+  integrity sha1-fULaw2jzKCmnNqzE8Mnzt5/Aibs=
+  dependencies:
+    glob "7.1.6"
 
 sequelize@^6.6.2:
   version "6.6.2"

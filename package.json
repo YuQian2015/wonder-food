@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "casbin": "^5.6.2",
+    "casbin-sequelize-adapter": "^2.2.0",
     "config": "^3.3.1",
     "dotenv-safe": "^8.2.0",
     "jsonwebtoken": "^8.5.1",

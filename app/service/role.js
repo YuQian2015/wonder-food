@@ -7,8 +7,8 @@ function toInt(str) {
 
 class RoleService {
 
-    async findStores(ctx, query = {}) {
-        return ctx.model.Store.findAll({
+    async findRoles(ctx, query = {}) {
+        return ctx.model.Role.findAll({
             ...query,
             order: [
                 ['created_at', 'DESC']
@@ -16,22 +16,22 @@ class RoleService {
         });
     }
 
-    async createStore(ctx, data) {
+    async createRole(ctx, data) {
         const { name } = data;
         if (!name) {
             ctx.status = 400;
             throw new Error('请输入内容！');
         }
-        return ctx.model.Store.create(data);
+        return ctx.model.Role.create(data);
     }
 
-    async deleteStore(ctx, id) {
-        const store = await ctx.model.Store.findByPk(toInt(id));
-        if (!store) {
+    async deleteRole(ctx, id) {
+        const role = await ctx.model.Role.findByPk(toInt(id));
+        if (!role) {
             ctx.status = 404;
             return;
         }
-        await store.destroy();
+        await role.destroy();
         ctx.status = 200;
     }
 
