@@ -11,15 +11,19 @@ class CommentService {
         return ctx.model.Comment.create(data);
     }
 
-    async findComment(ctx, data) {
+    async findComments(ctx, data) {
+        console.log(data);
         return ctx.model.Comment.findAll({
             ...data,
+            where: { post_id: data.post_id },
             order: [['created_at', 'DESC']],
             include: [{
                 model: ctx.model.User,
                 attributes: ['name', 'avatar_url', 'id', 'role']
             }, {
                 model: ctx.model.Store
+            }, {
+                model: ctx.model.Product
             }]
         });
     }

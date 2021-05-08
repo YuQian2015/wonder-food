@@ -49,6 +49,12 @@ Comment.belongsTo(Store, {
     constraints: false
 });
 
+Comment.hasOne(Product, {
+    foreignKey: 'id',
+    sourceKey: 'product_id',
+    constraints: false
+});
+
 Comment.belongsTo(User, {
     foreignKey: 'created_by',
     targetKey: 'id',

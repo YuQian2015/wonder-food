@@ -6,14 +6,15 @@ function toInt(str) {
 
 class CommentController {
   async create(ctx) {
-    const { post_id, comment_id, content, type, images, store_id } = ctx.request.body;
-    const newComment = await ctx.service.comment.createComment(ctx, { post_id, comment_id, content, type, images, store_id });
+    const { post_id, comment_id, content, type, images, store_id, product_id } = ctx.request.body;
+    const newComment = await ctx.service.comment.createComment(ctx, { post_id, comment_id, content, type, images, store_id, product_id });
     ctx.setResponse(newComment);
   }
 
   async findComments(ctx) {
-    const { post_id } = ctx.request.query;
-    const comments = await ctx.service.comment.findComment(ctx, { post_id });
+    let { post_id } = ctx.request.query;
+    post_id = toInt(post_id)
+    const comments = await ctx.service.comment.findComments(ctx, { post_id });
     ctx.setResponse(comments);
   }
 }
