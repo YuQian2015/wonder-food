@@ -3,8 +3,14 @@ module.exports = {
     const { INTEGER, DATE, STRING, ENUM } = Sequelize;
     await queryInterface.createTable('roles', {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-      name: STRING(200),
-      key: STRING(200),
+      name: {
+        type: STRING(200),
+        unique: true
+      },
+      key: {
+        type: STRING(200),
+        unique: true
+      },
       created_at: DATE,
       updated_at: DATE,
     });

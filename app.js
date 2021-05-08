@@ -21,6 +21,7 @@ const responseHandler = require('./app/middleware/response_handler');
 const jwtHandler = require('./app/middleware/jwt_handler');
 const modelTool = require('./app/middleware/model_tool');
 const casbin = require('./app/middleware/casbin');
+const authz = require('./app/middleware/authz');
 
 const app = new Koa(); // 创建koa 应用
 
@@ -32,11 +33,26 @@ app.use(responseHandler()); // 处理响应的中间件
 app.use(modelTool()); // 挂载model
 app.use(jwtHandler());
 app.use(jwt({ secret: jwtSecret }).unless({ path: [/^\/api\/public/] })); // 除了 /api/public 开头的请求都需要验证token
-casbin(app); // 挂载casbin
 
-// 使用koa-router中间件
-app.use(router.routes()).use(router.allowedMethods());
+// 挂载casbin
+casbin().then(enforcer => {
+    app.use(async (ctx, next) => {
+        try {
+            ctx.enforcer = enforcer;
+            await next();
+        } catch (err) {
+            console.log(err);
+            throw err
+        }
+    });
+    // app.use(authz());
 
-app.listen(appConfig.port, appConfig.ip, () => {
-    console.log(`服务已经启动，访问：http://${appConfig.ip}:${appConfig.port}${apiPrefix}`);
+
+    // 使用koa-router中间件
+    app.use(router.routes()).use(router.allowedMethods());
+
+    app.listen(appConfig.port, appConfig.ip, () => {
+        console.log(`服务已经启动，访问：http://${appConfig.ip}:${appConfig.port}${apiPrefix}`);
+    });
 });
+

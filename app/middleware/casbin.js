@@ -50,14 +50,6 @@ async function initCasbin() {
 }
 
 module.exports = async (app) => {
-    const enforce = await initCasbin();
-    app.use(async (ctx, next) => {
-        try {
-            ctx.enforce = enforce;
-            await next();
-        } catch (err) {
-            console.log(err);
-            throw err
-        }
-    });
+    const enforcer = await initCasbin();
+    return enforcer;
 }

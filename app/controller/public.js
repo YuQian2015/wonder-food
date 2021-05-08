@@ -54,12 +54,16 @@ class PublicController {
   }
   async initSystem(ctx) {
     const newRole = await ctx.service.role.createRole(ctx, { name: '超级管理员', key: 'root' });
+    await ctx.service.role.createRole(ctx, { name: '管理员', key: 'admin' });
+    await ctx.service.role.createRole(ctx, { name: '用户', key: 'user' });
+    await ctx.enforcer.addPolicy('admin', '/api/**', '(GET)|(POST)|(PUT)|(DELETE)');
     if (newRole) {
       const { name, age, email, tel, password, avatar_url, gender } = ctx.request.body;
       const newUser = await ctx.service.user.createUser(ctx, { name, age, email, tel, password, avatar_url, gender, role: newRole.id });
       if (newUser) {
         let userToken = {
-          id: newUser.id
+          id: newUser.id,
+          role: 'root'
         }
         const token = jwt.sign(userToken, jwtSecret, { expiresIn: '3h' }) // token签名 有效期为3小时
         ctx.setResponse({ token });

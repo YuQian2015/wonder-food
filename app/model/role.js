@@ -2,8 +2,14 @@ module.exports = (sequelize, DataTypes) => {
     const { INTEGER, DATE, STRING, ENUM } = DataTypes;
     return sequelize.define('role', {
         id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-        name: STRING(200),
-        key: STRING(200),
+        name: {
+            type: STRING(200),
+            unique: true
+        },
+        key: {
+            type: STRING(200),
+            unique: true
+        },
         created_at: DATE,
         updated_at: DATE,
     }, {
