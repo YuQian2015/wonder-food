@@ -19,7 +19,7 @@ class CommentService {
             order: [['created_at', 'DESC']],
             include: [{
                 model: ctx.model.User,
-                attributes: ['name', 'avatar_url', 'id', 'role']
+                attributes: ['name', 'avatar_url', 'id', 'role_id']
             }, {
                 model: ctx.model.Store
             }, {

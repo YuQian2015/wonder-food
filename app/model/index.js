@@ -27,7 +27,13 @@ for (let f of modelFiles) {
 }
 
 // 建立对应关系
-const { Post, User, Comment, Store, Product } = model;
+const { Post, User, Comment, Store, Product, Role } = model;
+
+User.hasOne(Role, {
+    foreignKey: 'id',
+    sourceKey: 'role_id',
+    constraints: false
+});
 
 // 一对一
 Post.belongsTo(User, {

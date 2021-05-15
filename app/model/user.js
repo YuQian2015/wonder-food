@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         password: STRING, // md5SignValue
         avatar_url: STRING,
         gender: ENUM('男', '女', '保密'), // 性别 0未设置 1男 2女
-        role: INTEGER, // 角色
+        role_id: INTEGER, // 角色
         user_status: INTEGER, // 0 访客 1 正式用户
         created_at: DATE,
         updated_at: DATE,

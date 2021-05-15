@@ -8,7 +8,7 @@ class PostController {
 
   async view(ctx) {
     const { id } = ctx.params;
-    const post = await ctx.service.post.findPost(ctx, { id: id });
+    const post = await ctx.service.post.findPost(ctx, toInt(id));
     ctx.setResponse(post);
   }
 

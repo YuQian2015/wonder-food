@@ -9,12 +9,19 @@ function toInt(str) {
 class UserService {
 
     async findUsers(ctx, query = {}) {
-        return ctx.model.User.findAll(query);
+        return ctx.model.User.findAll({
+            ...query,
+            attributes: ['name', 'age', 'id', 'email', 'avatar_url', 'gender', 'role_id', 'user_status'],
+            include: [{
+                model: ctx.model.Role,
+                attributes: ['name', 'key']
+            }]
+        });
     }
 
     async findUser(ctx, id) {
         return ctx.model.User.findByPk(toInt(id), {
-            attributes: ['name', 'age', 'id', 'email', 'avatar_url', 'gender', 'role', 'user_status']
+            attributes: ['name', 'age', 'id', 'email', 'avatar_url', 'gender', 'role_id', 'user_status']
         });
     }
 
