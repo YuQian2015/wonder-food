@@ -33,9 +33,9 @@ class UserController {
   }
 
   async update(ctx) {
-    const { name, age, email, tel, password, avatar_url, gender } = ctx.request.body;
+    const { name, age, email, tel, password, avatar_url, gender, role_id } = ctx.request.body;
     const { id } = ctx.state.user;
-    const user = await ctx.service.user.updateUser(ctx, id, { name, age, email, tel, password, avatar_url, gender });
+    const user = await ctx.service.user.updateUser(ctx, id, { name, age, email, tel, password, avatar_url, gender, role_id });
     ctx.setResponse(user);
   }
 

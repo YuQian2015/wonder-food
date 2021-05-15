@@ -14,7 +14,7 @@ class UserService {
             attributes: ['name', 'age', 'id', 'email', 'avatar_url', 'gender', 'role_id', 'user_status'],
             include: [{
                 model: ctx.model.Role,
-                attributes: ['name', 'key']
+                attributes: ['name', 'key', 'id']
             }]
         });
     }
@@ -51,7 +51,7 @@ class UserService {
             return;
         }
         await user.update(data);
-        return user;
+        return '修改成功';
     }
 
     async deleteUser(ctx, id) {
