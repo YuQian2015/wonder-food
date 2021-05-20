@@ -14,7 +14,7 @@ class UserService {
             attributes: ['name', 'age', 'id', 'email', 'avatar_url', 'gender', 'role_id', 'user_status'],
             include: [{
                 model: ctx.model.Role,
-                attributes: ['name', 'key', 'id']
+                attributes: ['name', 'key', 'id', 'system']
             }]
         });
     }

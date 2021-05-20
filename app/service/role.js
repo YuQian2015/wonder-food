@@ -1,4 +1,4 @@
-
+const { Op } = require("sequelize");
 function toInt(str) {
     if (typeof str === 'number') return str;
     if (!str) return str;
@@ -25,10 +25,19 @@ class RoleService {
     }
 
     async createRole(ctx, data) {
-        const { name } = data;
-        if (!name) {
+        const { name, key } = data;
+        if (!name || !key) {
             ctx.status = 400;
             throw new Error('请输入内容！');
+        }
+        console.log(data);
+        const role = await ctx.model.Role.findOne({
+            where: {
+                [Op.or]: [{ name: data.name }, { key: data.key }],
+            }
+        });
+        if (role) {
+            throw new Error('已经存在的角色！');
         }
         return ctx.model.Role.create(data);
     }
@@ -38,6 +47,9 @@ class RoleService {
         if (!role) {
             ctx.status = 404;
             return;
+        }
+        if (role.system) {
+            throw new Error('不能删除系统角色！');
         }
         await role.destroy();
         ctx.status = 200;
