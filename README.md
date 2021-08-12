@@ -7,6 +7,10 @@
 - 安装 VSCode
 - 检测 Git 安装，执行 `git --version` 检测版本，如果没有，请安装 Git
 
+使用Vue2.x开发的后台：https://github.com/YuQian2015/wonder-food-admin
+
+Vue2.x+Vant UI编写的移动端页面：https://github.com/YuQian2015/wonder-food-app
+
 ### 下载
 
 先进入你的项目开发目录，使用Git克隆本项目：
