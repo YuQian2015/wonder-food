@@ -25,14 +25,21 @@ const authz = require('./app/middleware/authz');
 
 const app = new Koa(); // 创建koa 应用
 
-app.use(serve(path.resolve(__dirname, 'upload'))); // 本地静态资源服务器
+app.use(serve(path.resolve(__dirname, 'upload'), {
+    setHeaders: (ctx) => {
+        ctx.setHeader('Access-Control-Allow-Origin', '*'); // 允许静态资源被跨域请求
+    }
+})); // 本地静态资源服务器
 app.use(logger()); // 处理log的中间件
 app.use(cors()); // 启用cors， 支持传递配置
 app.use(bodyParser()); // 使用bodyParser中间件，可以从post请求获取请求体
 app.use(responseHandler()); // 处理响应的中间件
 app.use(modelTool()); // 挂载model
 app.use(jwtHandler());
-app.use(jwt({ secret: jwtSecret }).unless({ path: [/^\/api\/public/] })); // 除了 /api/public 开头的请求都需要验证token
+app.use(jwt({ secret: jwtSecret })
+    .unless({
+        path: [/^\/api\/public/]
+    })); // 除了 /api/public 开头的请求都需要验证token
 
 // 挂载casbin
 casbin().then(enforcer => {

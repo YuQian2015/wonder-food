@@ -14,6 +14,7 @@ const store = require('./store');
 const product = require('./product');
 const role = require('./role');
 const policy = require('./policy');
+const setting = require('./setting');
 
 const index = async (ctx, next) => {
     console.log(ctx.app);
@@ -30,5 +31,6 @@ router.use('/stores', store.routes(), store.allowedMethods()); // 商家路由
 router.use('/products', product.routes(), product.allowedMethods()); // 商品路由
 router.use('/roles', role.routes(), role.allowedMethods()); // 角色路由
 router.use('/policies', policy.routes(), policy.allowedMethods()); // 协议路由
+router.use('/settings', setting.routes(), setting.allowedMethods()); // 设置路由
 
 module.exports = router;
