@@ -1,7 +1,7 @@
 {
   "name": "koa-mysql-start",
   "version": "1.0.0",
-  "description": "使用koa2+mysql进行API开发的快速开始项目",
+  "description": "毕业设计，使用Koa2+MySQL开发的美食+社交系统，搭建进行API开发的快速开始项目，前后端分离，Vue2开发移动端+管理后台",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
