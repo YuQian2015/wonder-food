@@ -15,15 +15,15 @@
 
 #### 需要安装的软件
 
-**CMD**
+##### CMD
 
 Windows 自带的**命令行**工具，使用 win+R 组合快捷键打开输入 cmd 回车之后即可使用，Win 键就是键盘左下角 ctrl 和 alt 之间存在的按键。
 
-**VSCode**
+##### VSCode
 
 开发和编辑使用的 VSCode，访问 [https://code.visualstudio.com/](https://code.visualstudio.com/)  点击 Download for Windows 就可以下载，下载完成之后点击执行安装即可。
 
-**Git**
+##### Git
 
 Git 可以用来下载拉取代码，提交修改等等，首先需要安装 git，访问 https://git-scm.com/ 下载，然后执行安装，安装完成之后可以在**命令行**执行 `git --version` 命令查看是否安装成功。如下：
 
@@ -34,7 +34,7 @@ $ git --version
 git version 2.21.0.windows.1
 ```
 
-**Node.js**
+##### Node.js
 
 Node.js 是本项目的服务端开发语言，可以访问 Node.js 的中文网 [http://nodejs.cn/](http://nodejs.cn/) 进行下载，点击下载，来到下载页面 [http://nodejs.cn/download/](http://nodejs.cn/download/) ，作为 Windows 64位用户，可以选择 Windows 安装包 (.msi) 的 64 位3版本进行下载。下载完成之后，可以点击运行下载的 .msi 后缀的安装包执行安装。
 
@@ -55,9 +55,13 @@ $ git clone https://github.com/YuQian2015/wonder-food.git
 
 执行完成之后将获得一个 wonder-food 文件夹，里面就是本项目代码，使用 VSCode 打开这个项目，之后的操作都在 VSCode 中进行。
 
-使用Vue2.x开发的后台：https://github.com/YuQian2015/wonder-food-admin
+#### 后台代码
 
-Vue2.x+Vant UI编写的移动端页面：https://github.com/YuQian2015/wonder-food-app
+使用 Vue2.x 开发的后台：https://github.com/YuQian2015/wonder-food-admin
+
+#### 移动端代码
+
+Vue2.x+Vant UI 编写的移动端页面：https://github.com/YuQian2015/wonder-food-app
 
 ### 安装依赖
 
@@ -121,17 +125,17 @@ $ yarn dev
 
 至此，本接口项目启动成功。
 
-### 后面是其它参考内容
+### 开发笔记和其它内容
 
-### 关于 sequelize-cli
+#### 关于 sequelize-cli
 
-#### 安装
+##### 安装
 
 ```shell
 $ yarn add -D sequelize-cli
 ```
 
-#### 新建配置文件
+##### 新建配置文件
 
 在项目根目录新建 .sequelizerc 文件：
 
@@ -202,8 +206,6 @@ npx sequelize db:migrate
 # 可以通过 `db:migrate:undo:all` 回退到初始状态
 # npx sequelize db:migrate:undo:all
 ```
-
-### 开发笔记
 
 #### MySQL不支持数组类型
 
